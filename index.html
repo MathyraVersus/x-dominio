@@ -459,8 +459,13 @@
         };
 
         function generateId() {
-            return Math.random().toString(36).substring(2, 9).toUpperCase();
-        }
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let result = '';
+    for (let i = 0; i < 10; i++) {
+        result += letters.charAt(Math.floor(Math.random() * letters.length));
+    }
+    return result;
+}
 
         function showScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -530,7 +535,7 @@
             }
 
             isHost = true;
-            roomCode = generateId().substring(0, 6);
+            roomCode = generateId().substring(0, 3);
             myPlayerId = generateId();
 
             gameState.totalPlayers = numPlayers;
